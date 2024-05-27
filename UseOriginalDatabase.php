@@ -3,11 +3,15 @@
 use Prestashop\Testing\Database\Config\Config;
 use Prestashop\Testing\Database\Processor\DatabaseParametersOverrideProcessor;
 
-if (!file_exists('vendor/prestashop-module-testing-database/vendor/autoload.php')) {
+$localAutoloadFilePath = 'vendor/prestashop-module-testing-database/vendor/autoload.php';
+
+if (!file_exists($localAutoloadFilePath)) {
     echo '[ERROR] ' . 'Failed to reach autoload' . PHP_EOL;
 
     return;
 }
+
+require_once $localAutoloadFilePath;
 
 if (!file_exists( Config::BASE_INCLUDES_FILE_PATH)) {
     echo '[ERROR] ' . 'Failed to include BaseIncludes.php file' . PHP_EOL;

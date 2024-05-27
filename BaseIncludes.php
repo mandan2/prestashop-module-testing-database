@@ -14,7 +14,6 @@ if (!file_exists(Config::PRESTASHOP_PARAMETERS_FILE_PATH)) {
     return;
 }
 
-require_once Config::LOCAL_AUTOLOAD_FILE_PATH;
 require_once Config::PRESTASHOP_AUTOLOAD_FILE_PATH;
 require_once Config::PRESTASHOP_CONFIG_FILE_PATH;
 
