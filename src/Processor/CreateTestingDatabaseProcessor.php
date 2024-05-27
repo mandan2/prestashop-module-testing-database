@@ -80,33 +80,44 @@ class CreateTestingDatabaseProcessor
             throw new \Exception('Failed to drop existing database');
         }
 
-        $result = \DbPDOCore::createDatabase(
-            $this->getServerNameForDatabaseCreate(),
+        $command = sprintf(
+            'mysql -h %s %s -u %s -p%s -e "CREATE DATABASE IF NOT EXISTS %s;"',
+            $this->databaseHost,
+            $this->getPortForDatabaseDump(),
             $this->databaseUser,
             $this->databasePass,
             $this->newDatabaseName
         );
 
-        if (!$result) {
-            throw new \Exception('Failed to create new database or it already exists');
+        system($command, $output);
+
+        if ($output !== 0) {
+            throw new \Exception('Failed to create new database');
+        }
+
+        $command = sprintf(
+            'mysql -h %s %s -u %s -p%s %s < %s',
+            $this->databaseHost,
+            $this->getPortForDatabaseDump(),
+            $this->databaseUser,
+            $this->databasePass,
+            $this->newDatabaseName,
+            $this->backupFile
+        );
+
+        system($command, $output);
+
+        if ($output !== 0) {
+            throw new \Exception('Failed to upload testing database dump');
         }
     }
 
     private function getPortForDatabaseDump(): string
     {
-        if ($this->databasePort === '') {
+        if (empty($this->databasePort)) {
             return '';
         }
 
         return '-P ' . $this->databasePort;
-    }
-
-    private function getServerNameForDatabaseCreate(): string
-    {
-        if ($this->databasePort === '') {
-            return $this->databaseHost;
-        }
-
-        return $this->databaseHost . $this->databasePort;
     }
 }
