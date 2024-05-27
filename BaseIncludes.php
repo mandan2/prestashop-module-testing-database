@@ -2,12 +2,6 @@
 
 use Prestashop\Testing\Database\Config\Config;
 
-if (!file_exists(Config::LOCAL_AUTOLOAD_FILE_PATH)) {
-    echo '[ERROR] ' . 'Failed to reach autoload' . PHP_EOL;
-
-    return;
-}
-
 if (!file_exists(Config::PRESTASHOP_AUTOLOAD_FILE_PATH)) {
     echo '[ERROR] ' . 'Failed to reach PrestaShop autoload' . PHP_EOL;
 
