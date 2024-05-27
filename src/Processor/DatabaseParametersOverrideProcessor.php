@@ -1,6 +1,6 @@
 <?php
 
-namespace Prestashop\Testing\Database;
+namespace Prestashop\Testing\Database\Processor;
 
 class DatabaseParametersOverrideProcessor
 {
