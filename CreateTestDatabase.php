@@ -1,16 +1,15 @@
 <?php
 
-use Prestashop\Testing\Database\CreateTestingDatabaseProcessor;
+use Prestashop\Testing\Database\Config\Config;
+use Prestashop\Testing\Database\Processor\CreateTestingDatabaseProcessor;
 
-$baseIncludesFileName = 'vendor/prestashop-module-testing-database/BaseIncludes.php';
-
-if (!file_exists($baseIncludesFileName)) {
+if (!file_exists( Config::BASE_INCLUDES_FILE_PATH)) {
     echo '[ERROR] ' . 'Failed to include BaseIncludes.php file' . PHP_EOL;
 
     return;
 }
 
-include_once $baseIncludesFileName;
+include_once  Config::BASE_INCLUDES_FILE_PATH;
 
 $databaseHost = $parameters['parameters']['database_host'];
 $databasePort = $parameters['parameters']['database_port'];
@@ -18,8 +17,8 @@ $originalDatabaseName = $parameters['parameters']['database_name'];
 $databaseUser = $parameters['parameters']['database_user'];
 $databasePassword = $parameters['parameters']['database_password'];
 
-$newDatabaseName = 'prestashop_test';
-$databaseBackupFile = 'vendor/prestashop-module-testing-database/temp/backup.sql'; // TODO give ability to provide file path
+$newDatabaseName = Config::NEW_DATABASE_NAME;
+$databaseBackupFile = Config::DATABASE_BACKUP_FILE_PATH;
 
 $createTestingDatabaseProcessor = new CreateTestingDatabaseProcessor(
     $databaseHost,

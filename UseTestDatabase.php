@@ -1,23 +1,23 @@
 <?php
 
-use Prestashop\Testing\Database\DatabaseParametersOverrideProcessor;
+use Prestashop\Testing\Database\Config\Config;
+use Prestashop\Testing\Database\Processor\DatabaseParametersOverrideProcessor;
 
-$baseIncludesFileName = 'vendor/prestashop-module-testing-database/BaseIncludes.php';
-
-if (!file_exists($baseIncludesFileName)) {
+if (!file_exists( Config::BASE_INCLUDES_FILE_PATH)) {
     echo '[ERROR] ' . 'Failed to include BaseIncludes.php file' . PHP_EOL;
 
     return;
 }
 
-include_once $baseIncludesFileName;
+include_once  Config::BASE_INCLUDES_FILE_PATH;
 
-$newDatabaseName = 'prestashop_test';
-
-$override = new DatabaseParametersOverrideProcessor($parametersPath, $parameters, 'vendor/prestashop-module-testing-database/temp/parameters.php.bak');
-
+$override = new DatabaseParametersOverrideProcessor(
+    Config::PRESTASHOP_PARAMETERS_FILE_PATH,
+    $parameters,
+    Config::PARAMETERS_BACKUP_FILE_PATH
+);
 try {
-    $override->override($newDatabaseName);
+    $override->override(Config::NEW_DATABASE_NAME);
 } catch (Throwable $exception) {
     echo '[ERROR] ' . $exception->getMessage() . PHP_EOL;
 

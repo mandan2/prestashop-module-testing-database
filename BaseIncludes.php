@@ -1,30 +1,27 @@
 <?php
 
-$autoload = 'vendor/prestashop-module-testing-database/vendor/autoload.php';
-$prestashopAutoload = '../../vendor/autoload.php';
-$prestashopConfig = '../../config/config.inc.php';
-$parametersPath = '../../app/config/parameters.php';
+use Prestashop\Testing\Database\Config\Config;
 
-if (!file_exists($autoload)) {
+if (!file_exists(Config::LOCAL_AUTOLOAD_FILE_PATH)) {
     echo '[ERROR] ' . 'Failed to reach autoload' . PHP_EOL;
 
     return;
 }
 
-if (!file_exists($prestashopAutoload)) {
+if (!file_exists(Config::PRESTASHOP_AUTOLOAD_FILE_PATH)) {
     echo '[ERROR] ' . 'Failed to reach PrestaShop autoload' . PHP_EOL;
 
     return;
 }
 
-if (!file_exists($parametersPath)) {
+if (!file_exists(Config::PRESTASHOP_PARAMETERS_FILE_PATH)) {
     echo '[ERROR] ' . 'Failed to reach database config parameters' . PHP_EOL;
 
     return;
 }
 
-require_once $autoload;
-require_once $prestashopAutoload;
-require_once $prestashopConfig;
+require_once Config::LOCAL_AUTOLOAD_FILE_PATH;
+require_once Config::PRESTASHOP_AUTOLOAD_FILE_PATH;
+require_once Config::PRESTASHOP_CONFIG_FILE_PATH;
 
-$parameters = include($parametersPath);
+$parameters = include_once(Config::PRESTASHOP_PARAMETERS_FILE_PATH);
