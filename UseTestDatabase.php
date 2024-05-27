@@ -34,4 +34,4 @@ try {
     return;
 }
 
-echo '[SUCCESS] Operation use test database successful';
+echo '[SUCCESS] Operation use test database successful' . PHP_EOL;

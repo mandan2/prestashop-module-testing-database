@@ -35,4 +35,4 @@ try {
     return;
 }
 
-echo '[SUCCESS] Operation successful';
+echo '[SUCCESS] Operation successful' . PHP_EOL;

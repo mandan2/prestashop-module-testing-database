@@ -48,4 +48,4 @@ try {
     return;
 }
 
-echo '[SUCCESS] Operation create testing database successful';
+echo '[SUCCESS] Operation create testing database successful' . PHP_EOL;
