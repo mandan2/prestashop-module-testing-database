@@ -3,7 +3,7 @@
 use Prestashop\Testing\Database\Config\Config;
 use Prestashop\Testing\Database\Processor\CreateTestingDatabaseProcessor;
 
-$localAutoloadFilePath = 'vendor/prestashop-module-testing-database/vendor/autoload.php';
+$localAutoloadFilePath = 'vendor/mandan2/prestashop-module-testing-database/vendor/autoload.php';
 
 if (!file_exists($localAutoloadFilePath)) {
     echo '[ERROR] ' . 'Failed to reach autoload' . PHP_EOL;
