@@ -25,7 +25,7 @@ composer require mandan2/prestashop-module-testing-database
 To create a clone database, run the following command in your terminal from module's main dir:
 
 ```bash
-php vendor/prestashop-module-testing-database/CreateTestDatabase.php
+php vendor/mandan2/prestashop-module-testing-database/CreateTestDatabase.php
 ```
 
 ### Using the Clone Database
@@ -33,7 +33,7 @@ php vendor/prestashop-module-testing-database/CreateTestDatabase.php
 To switch to the clone database, use the following command from module's main dir:
 
 ```bash
-php vendor/prestashop-module-testing-database/UseTestDatabase.php
+php vendor/mandan2/prestashop-module-testing-database/UseTestDatabase.php
 ```
 
 ### Using the Original Database
@@ -41,7 +41,7 @@ php vendor/prestashop-module-testing-database/UseTestDatabase.php
 To revert to the original database, use the following command from module's main dir:
 
 ```bash
-php vendor/prestashop-module-testing-database/UseOriginalDatabase.php
+php vendor/mandan2/prestashop-module-testing-database/UseOriginalDatabase.php
 ```
 
 ### Integration
