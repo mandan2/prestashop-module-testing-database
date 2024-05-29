@@ -50,6 +50,8 @@ These commands can be integrated into your workflow when launching tests. This e
 
 ## Requirements
 
+- Composer 2.2; 
+- MySQL 5.6+;
 - PHP 7.1+
 - PrestaShop 1.7.1+ (not tested)
 - File editing permissions for app/config/parameters.php
